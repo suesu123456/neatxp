@@ -1,0 +1,20 @@
+#!/bin/sh
+if [ ! -f "version1.0.tar.gz" ]; then
+   curl -OL https://github.com/suesu123456/neatxp/archive/version1.0.tar.gz
+fi
+if [ ! -d "neatxp-version1.0" ]; then
+   tar -zxvf version1.0.tar.gz
+fi
+folder="$HOME/Library/Developer/Xcode/Templates/"
+if [ ! -d "$folder" ]; then
+   mkdir "$HOME/Library/Developer/Xcode/Templates/"
+fi
+folder2="$HOME/Library/Developer/Xcode/Templates/Sue\'s\ Single\ View\ Application.xctemplate"
+if [ -d "$folder2" ]; then  
+   rm -f folder2
+fi
+mv -f neatxp-version1.0/Sue\'s\ Single\ View\ Application.xctemplate $HOME/Library/Developer/Xcode/Templates/Sue\'s\ Single\ View\ Application.xctemplate
+rm version1.0.tar.gz
+if [ -d "neatxp-version1.0" ]; then
+   rm -r neatxp-version1.0
+fi
